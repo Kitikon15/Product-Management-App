@@ -1,69 +1,21 @@
-import { useState } from "react";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router";
 
-import "./App.css";
+import AddProductPage from "./pages/AddProductPage";
+import EditProductPAge from "./pages/EditProductPAge";
+import productPage from "./pages/productPage";
 
-function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <>
-      <div className="hover-3d">
-        {/* content */}
-        <figure className="w-60 rounded-2xl">
-          <img
-            src="https://img.daisyui.com/images/stock/card-1.webp?x"
-            alt="Tailwind CSS 3D card"
-          />
-        </figure>
-        {/* 8 empty divs needed for the 3D effect */}
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-
-      <div className="hover-3d">
-        {/* content */}
-        <figure className="w-60 rounded-2xl">
-          <img
-            src="https://img.daisyui.com/images/stock/card-2.webp?x"
-            alt="Tailwind CSS 3D hover"
-          />
-        </figure>
-        {/* 8 empty divs needed for the 3D effect */}
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-
-      <div className="hover-3d">
-        {/* content */}
-        <figure className="w-60 rounded-2xl">
-          <img
-            src="https://img.daisyui.com/images/stock/card-3.webp?x"
-            alt="Tailwind CSS 3D hover"
-          />
-        </figure>
-        {/* 8 empty divs needed for the 3D effect */}
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </>
+function App (){
+  return(
+    <BrowserRouter>
+      <Routes>
+        <Route path = "/" element = {<Navigate to = "/product" replace/>} />
+        <Route path = "/product" element = {<productPage />} />
+        <Route path = "/product/new" element = {<AddProductPage />} />
+        <Route path = "/product/:id/edit" element = {<EditProductPAge />} />
+        <Route path = "*" element = {<Navigate to = "/product" replace/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
+
 export default App;
